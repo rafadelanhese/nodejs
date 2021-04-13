@@ -9,7 +9,7 @@ module.exports = () => {
     app.use(bodyparser.json())
 
     consign()
-        .include('controller')
+        .include('controllers')
         .into(app)
 
         return app

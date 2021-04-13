@@ -5,12 +5,12 @@ class Tabelas {
     }
 
     criarAtendimentos() {
-        const sql = 'CREATE TABLE Atendimentos (id int NOT NULL AUTO_INCREMENT, cliente varchar(50) NOT NULL, pet varchar(20), servico varchar(20) NOT_NULL, status varchar(20) NOT_NULL, observacoes text, PRIMARY KEY(id))'
-        this.conexao.query(sql, () => {
+        const sql = 'CREATE TABLE IF NOT EXISTS Atendimento (id int NOT NULL AUTO_INCREMENT, cliente varchar(50) NOT NULL, pet varchar(20), servico varchar(20) NOT NULL, data datetime NOT NULL, dataCriacao datetime NOT NULL, status varchar(20) NOT NULL, observacoes text, PRIMARY KEY(id))'
+        this.conexao.query(sql, (erro) => {
             if(erro){
-                console.log(erro)
+                console.log('Erro ao criar tabela' + erro)
             } else {
-                console('Tabela criada com sucesso!!')
+                console.log('Tabela criada com sucesso!!')
             }            
         });
     }
